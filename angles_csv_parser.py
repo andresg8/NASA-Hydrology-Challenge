@@ -27,9 +27,3 @@ if __name__ == "__main__":
     data = fetch_data()
     print_data(data)
 
-
-
-#pytests:
-
-def test_fetch_data():
-    assert type(fetch_data()) == bytes
