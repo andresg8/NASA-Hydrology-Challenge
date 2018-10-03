@@ -1,4 +1,4 @@
-from angles_csv_parses.py import *
+from angles_csv_parser.py import *
 
 def test_fetch_data():
     assert type(fetch_data()) == bytes
