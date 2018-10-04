@@ -9,3 +9,8 @@ def test_parse_data():
     values = parse_data(lines)
     for value in values:
         assert len(value) == 2
+        try:
+            float(value[0])
+            float(value[1])
+        except ValueError:
+            raise AssertionError()
