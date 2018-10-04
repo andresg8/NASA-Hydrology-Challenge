@@ -5,4 +5,5 @@ install:
   - pip install -r requirements.txt
 script: 
  - pytest
- - angles_csv_parser.py
+after_success:
+ - python angles_csv_parser.py
