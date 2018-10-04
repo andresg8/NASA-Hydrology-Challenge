@@ -11,17 +11,20 @@ def fetch_data() -> ".csv":
     except:
         print("url: " + url + " currently unreachable")
 
+def parse_data(decodedData: str) -> [[]]:
+    values = []
+    for line in decodedData[1:]:
+        if line: values.append(line.split(','))
+    return values
+
 def print_data(data: ".csv"):
-    if not data: return
     data = data.decode('utf-8')
     lines = data.split('\r\n')
     first = lines[0].split(',')
     print(first[0].strip() + '\t' + first[1].strip() + '\t' + "cosine_values")
-    for line in lines[1:]:
-        values = line.split(',')
-        if len(values) != 2:
-            break
-        print('{}\t\t{}\t\t{:.3f}'.format(values[0], values[1], math.cos(math.radians(int(values[1])))))
+    values = parse_data(lines)
+    for value in values:
+        print('{}\t\t{}\t\t{:.3f}'.format(value[0], value[1], math.cos(math.radians(int(value[1])))))
 
 if __name__ == "__main__":
     data = fetch_data()
